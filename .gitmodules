@@ -1,0 +1,7 @@
+[submodule "chronos"]
+	path = chronos
+	url = https://github.com/NagaraTech/chronos.git
+	branch = feat/vlc-inner-node
+[submodule "znet"]
+	path = znet
+	url = https://github.com/bufrr/znet.git
