@@ -1,24 +1,23 @@
 #!/bin/bash
 
 cd ../znet
-go build
-
-cat << 'EOF' > run-nodes.sh
-#!/bin/bash
 
 p2p_port=33333
 ws_port=23333
 rpc_port=13333
-base_id="Hello"
+base_id="hello"
 vlc_port=8050
 seed_domain=192.168.50.209
 
+go build
 ps -ef | grep 'znet' | grep -v grep | awk '{print $2}' | xargs kill -9
 
-nohup ./znet --id Hello0 --domain ${seed_domain} > output.log 2>&1 &
+echo "Running seed instance 0"
+nohup ./znet --id hello0 --domain ${seed_domain} > znet_${base_id}0.log 2>&1 &
 
 for i in {1..10}
-do
+do  
+    sleep 1
     id=${base_id}${i}
     ((p2p_port++))
     ((ws_port++))
@@ -31,9 +30,5 @@ do
                  --ws ${ws_port} \
                  --rpc ${rpc_port} \
                  --remoterpc http://${seed_domain}:13333/rpc13333 \
-                 > "output_${i}.log" 2>&1 &
+                 > "znet_${id}.log" 2>&1 &
 done
-EOF
-
-chmod +x run-nodes.sh
-./run-nodes.sh

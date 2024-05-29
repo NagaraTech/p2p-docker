@@ -1,8 +1,8 @@
 #!/bin/bash
 
 cd ../chronos
-
-mkdir scripts & cd scripts
+mkdir scripts
+cd scripts
 
 export PGUSER="postgres"
 export PGPASSWORD=""
