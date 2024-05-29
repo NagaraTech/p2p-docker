@@ -2,6 +2,8 @@
 	path = chronos
 	url = https://github.com/NagaraTech/chronos.git
 	branch = feat/vlc-inner-node
+	commit = e409f771a96866623d9169163ad821e979a83307
 [submodule "znet"]
 	path = znet
 	url = https://github.com/bufrr/znet.git
+	commit = 0e08f3e62ffa0b06d535a8275af6d3786731a535
